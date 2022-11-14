@@ -4,29 +4,51 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 4;
-    public Rigidbody rigidbody;
-    // Start is called before the first frame update
-    void Start()
-    {
-        rigidbody=GetComponent<Rigidbody>();
-        rigidbody.angularVelocity = Vector3.zero;
+
+    public Rigidbody rb;
+    float inputHorizontal;
+    float inputVertical;
+    float moveSpeed = 5f;
+    float jumpPower=3f;
+    bool isJump;
+
+    void Start(){
+    	rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKey(KeyCode.W)){
-            rigidbody.velocity = transform.forward * speed;;
+    void Update() {
+    inputHorizontal = Input.GetAxisRaw("Horizontal");
+    inputVertical = Input.GetAxisRaw("Vertical");
+    }
+
+    void FixedUpdate() {
+        
+        // カメラの方向から、X-Z平面の単位ベクトルを取得
+        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+        // 方向キーの入力値とカメラの向きから、移動方向を決定
+        Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
+ 
+    	//if (jumpNow == true) return;
+    	// 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
+        rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
+        // キャラクターの向きを進行方向に
+        if (moveForward != Vector3.zero) {
+        transform.rotation = Quaternion.LookRotation(moveForward);
         }
-        if(Input.GetKey(KeyCode.A)){
-            rigidbody.velocity = -transform.right * speed;
+
+    }
+    private void OnCllisionEnter(Collision other){
+        if(isJump==true){
+            if (other.gameObject.tag=="Ground") {
+	        	isJump=false;
+    	    }
         }
-        if(Input.GetKey(KeyCode.S)){
-            rigidbody.velocity = -transform.forward * speed;;
-        }
-        if(Input.GetKey(KeyCode.D)){
-            rigidbody.velocity = transform.right * speed;;
-        }
+    }
+    void Jump(){
+        if(isJump==true) return;
+    	if (Input.GetKeyDown(KeyCode.Space)) {
+            rb.AddForce(Vector3.up * jumpPower);
+            isJump=true;
+    	}
     }
 }

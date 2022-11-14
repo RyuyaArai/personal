@@ -98,8 +98,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.9798827, z: 1}
+  m_Center: {x: 0, y: 0.0100586265, z: 0}
 --- !u!54 &-4833352362159695562
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,8 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f91b9fb8cc7bc43af77ebe406bf667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  rigidbody: {fileID: -4833352362159695562}
+  rb: {fileID: 0}
 --- !u!1 &8996916379033401778
 GameObject:
   m_ObjectHideFlags: 0
