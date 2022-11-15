@@ -6,11 +6,20 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int KeyCount;
+    public int KeyCount;
     public Text textComponent;
+    public GameObject inductionText;
 
     private void Start(){
+        Screen.SetResolution(1920,1080,false);
+        Application.targetFrameRate=60;
         KeyCount=0;
+    }
+
+    private void Update(){
+        if(KeyCount==3){
+        inductionText.SetActive(true);
+        }
     }
 
     public void AddKeyCount(){
@@ -18,16 +27,12 @@ public class GameManager : MonoBehaviour
         textComponent.text = "KeyCount : "+ KeyCount;
     }
 
-    public int GetCount(){
-        return KeyCount;
-    }
-
     public void SceneReset(){
         string activeSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(activeSceneName);
     }
+
     public void ChangeScene(string nextScene){
         SceneManager.LoadScene(nextScene);
     }
-
 }
