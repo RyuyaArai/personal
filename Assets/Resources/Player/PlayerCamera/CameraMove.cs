@@ -52,8 +52,6 @@ public class CameraMove : MonoBehaviour
         //　レイを視覚的に確認
         Debug.DrawLine(charaLookAtPosition.position, transform.position, Color.red, 0f, false);
  
-        //　スピードを考慮しない場合はLookAtで出来る
-        //transform.LookAt(charaTra.position);
         //　スピードを考慮する場合
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(charaLookAtPosition.position - transform.position), cameraRotateSpeed * Time.deltaTime);
     }
