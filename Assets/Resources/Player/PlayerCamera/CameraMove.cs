@@ -23,10 +23,12 @@ public class CameraMove : MonoBehaviour
     void Update() {
         //　通常のカメラ位置を計算
         var cameraPos = charaLookAtPosition.position + (-charaLookAtPosition.forward * basePos.z) + (Vector3.up * basePos.y);
+        //transform.position = cameraPos;
         //　カメラの位置をキャラクターの後ろ側に移動させる
         transform.position = Vector3.Lerp(transform.position, cameraPos, cameraMoveSpeed * Time.deltaTime);
-        
-        // マウスの移動量を取得
+        transform.LookAt(charaLookAtPosition.position);
+
+        // // マウスの移動量を取得
         float mx = Input.GetAxis("Mouse X");
         float my = Input.GetAxis("Mouse Y");
  
@@ -42,8 +44,8 @@ public class CameraMove : MonoBehaviour
         {
             // 回転軸はカメラ自身のX軸
             transform.RotateAround(charaLookAtPosition.transform.position, transform.right, my);
-        
         }
+        
         RaycastHit hit;
         //　キャラクターとカメラの間に障害物があったら障害物の位置にカメラを移動させる
         if (Physics.Linecast(charaLookAtPosition.position, transform.position, out hit, obstacleLayer)) {

@@ -8,12 +8,13 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
     float inputHorizontal;
     float inputVertical;
-    float moveSpeed = 5f;
-    float jumpPower=3f;
+    float moveSpeed = 10f;
+    float jumpPower=500f;
     bool isJump;
 
     void Start(){
     	rb = GetComponent<Rigidbody>();
+        isJump = true;
     }
 
     void Update() {
@@ -28,27 +29,25 @@ public class Player : MonoBehaviour
         // 方向キーの入力値とカメラの向きから、移動方向を決定
         Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
  
-    	//if (jumpNow == true) return;
     	// 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
         rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
         // キャラクターの向きを進行方向に
         if (moveForward != Vector3.zero) {
         transform.rotation = Quaternion.LookRotation(moveForward);
         }
-
+        if(isJump==false){
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                Debug.Log("space");
+                rb.AddForce(Vector3.up * jumpPower);
+                isJump=true;
+    	    }
+        }
     }
-    private void OnCllisionEnter(Collision other){
+    private void OnCollisionEnter(Collision other){
         if(isJump==true){
             if (other.gameObject.tag=="Ground") {
 	        	isJump=false;
     	    }
         }
-    }
-    void Jump(){
-        if(isJump==true) return;
-    	if (Input.GetKeyDown(KeyCode.Space)) {
-            rb.AddForce(Vector3.up * jumpPower);
-            isJump=true;
-    	}
     }
 }
