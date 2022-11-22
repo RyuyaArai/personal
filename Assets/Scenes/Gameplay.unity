@@ -162,6 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charaLookAtPosition: {fileID: 1468340736}
   forward: {x: 0, y: 0, z: 0}
+  rotate: {x: 0, y: 0, z: 0, w: 0}
+  position: {x: 0, y: 0, z: 0}
 --- !u!65 &100945652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -170,7 +172,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100945650}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -195,7 +197,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0b5607dbec30c9d44ae624272127a334, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3242,6 +3244,10 @@ PrefabInstance:
     - target: {fileID: 696998677622489833, guid: 41a3c4fe3d4725e4887670ed6cce375b, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 696998677622489833, guid: 41a3c4fe3d4725e4887670ed6cce375b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1526868870284235879, guid: 41a3c4fe3d4725e4887670ed6cce375b, type: 3}
       propertyPath: m_RootOrder

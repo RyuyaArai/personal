@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
-    public Rigidbody rb;
+    [SerializeField]
+    private Rigidbody rb;
     float inputHorizontal;
     float inputVertical;
     float moveSpeed = 10f;
-    float jumpPower=500f;
+    float jumpPower = 500f;
     bool isJump;
+    bool isWall;
 
     void Start(){
     	rb = GetComponent<Rigidbody>();
@@ -42,12 +43,34 @@ public class Player : MonoBehaviour
                 isJump=true;
     	    }
         }
+        if(isWall == true){
+            if(inputHorizontal > 0) {
+                rb.velocity += new Vector3(0.0f,1.0f,0.0f);
+            }
+        }
     }
+
+
     private void OnCollisionEnter(Collision other){
-        if(isJump==true){
-            if (other.gameObject.tag=="Ground") {
-	        	isJump=false;
+        if(isJump == true) {
+            if (other.gameObject.tag == "Ground") {
+	        	isJump = false;
     	    }
+            if(other.gameObject.tag == "Wall") {
+                isWall = true;
+            }
+            if(other.gameObject.tag != "Wall"){
+                isWall = false;
+            }
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other) {
+        if(isJump == true) {
+            if(other.gameObject.tag == "WallTop") {
+                isJump = false;
+            }   
         }
     }
 }

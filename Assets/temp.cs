@@ -8,6 +8,10 @@ public class temp : MonoBehaviour
     private Transform charaLookAtPosition;
     [SerializeField]
     private Vector3 forward;
+    [SerializeField]
+    private Quaternion rotate;
+    [SerializeField]
+    private Vector3 position;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +22,7 @@ public class temp : MonoBehaviour
     void Update()
     {
         forward = charaLookAtPosition.forward;
+        rotate = charaLookAtPosition.rotation;
+        position=charaLookAtPosition.position;
     }
 }
