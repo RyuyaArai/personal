@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         }
         if(isWall == true){
             if(inputHorizontal > 0) {
-                rb.velocity += new Vector3(0.0f,1.0f,0.0f);
+                rb.velocity += new Vector3(0.0f,5.0f,0.0f);
             }
         }
     }
