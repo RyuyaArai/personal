@@ -15,7 +15,7 @@ public class CameraMove : MonoBehaviour
     private float cameraRotateSpeed = 90f;
     //　カメラのキャラクターからの相対値を指定
     [SerializeField]
-    private Vector3 basePos = new Vector3(0f, 1f, 5f);
+    private Vector3 basePos = new Vector3(0f, 1f, 2.5f);
     // 障害物とするレイヤー
     [SerializeField]
     private LayerMask obstacleLayer;

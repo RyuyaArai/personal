@@ -6,16 +6,19 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody rb;
+    [SerializeField]
+    private GameObject go;
     float inputHorizontal;
     float inputVertical;
-    float moveSpeed = 10f;
-    float jumpPower = 500f;
+    float moveSpeed = 5f;
+    float jumpPower = 250f;
     bool isJump;
     bool isWall;
 
     void Start(){
     	rb = GetComponent<Rigidbody>();
         isJump = true;
+        go.transform.position = new Vector3(Random.value * 30f+5,20,Random.value * 20+5f);
     }
 
     void Update() {
@@ -39,15 +42,17 @@ public class Player : MonoBehaviour
         if(isJump==false){
             if (Input.GetKeyDown(KeyCode.Space)) {
                 Debug.Log("space");
-                rb.AddForce(Vector3.up * jumpPower);
+                rb.AddForce(Vector3.up * (jumpPower * 2));
                 isJump=true;
     	    }
         }
         if(isWall == true){
-            if(inputHorizontal > 0) {
+            if(inputHorizontal >= 0) {
                 rb.velocity += new Vector3(0.0f,5.0f,0.0f);
             }
         }
+        rb.AddForce(Vector3.up * (-jumpPower / 10));
+
     }
 
 
