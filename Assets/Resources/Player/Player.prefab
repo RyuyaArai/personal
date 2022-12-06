@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 696998677622489833}
+  go: {fileID: 4023664698015010569}
 --- !u!54 &696998677622489833
 Rigidbody:
   m_ObjectHideFlags: 0

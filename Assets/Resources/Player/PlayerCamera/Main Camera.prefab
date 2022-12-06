@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a91362486bef9548857c3e7e884af9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaLookAtPosition: {fileID: 3084723177855622438, guid: 41a3c4fe3d4725e4887670ed6cce375b, type: 3}
-  cameraMoveSpeed: 2
-  cameraRotateSpeed: 90
-  basePos: {x: 0, y: 1, z: 5}
+  charaLookAtPosition: {fileID: 1526868870284235879, guid: 41a3c4fe3d4725e4887670ed6cce375b, type: 3}
+  cameraMoveSpeed: 5
+  cameraRotateSpeed: 45
+  basePos: {x: 0, y: 1, z: 2.5}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
