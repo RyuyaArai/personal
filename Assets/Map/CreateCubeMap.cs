@@ -76,7 +76,7 @@ public class CreateCubeMap : MonoBehaviour
         for (int x = 0; x < width; x++) {
             for (int z = 0; z < depth; z++) {
                 GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);                   //新しいキューブ作成
-                cube.transform.localPosition = new Vector3(x*magnification, 0, z*magnification);    //地面に置く
+                cube.transform.localPosition = new Vector3(x * magnification, 0, z * magnification);    //地面に置く
                 cube.transform.SetParent(transform);                //キューブを子オブジェクトにする
 
                 if (!needToCollider) {
@@ -85,7 +85,7 @@ public class CreateCubeMap : MonoBehaviour
 
                 SetY(cube); //高さの設定をする
                 cube.tag = "Ground";
-                cube.transform.localScale = new Vector3(1*magnification,4,1*magnification);
+                cube.transform.localScale = new Vector3(1 * magnification, 4, 1 * magnification);
                 cube.GetComponent<BoxCollider>().material = pm;
             }
         }
@@ -95,7 +95,7 @@ public class CreateCubeMap : MonoBehaviour
 
     public float GetDepth() { return depth; }
 
-    public float GetMagnification() {return magnification;}
+    public float GetMagnification() { return magnification; }
 
 
 
