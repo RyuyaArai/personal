@@ -38,6 +38,7 @@ public class CreateCubeMap : MonoBehaviour
             instance = this;
         }
     }
+    
     private void Update() {
         if(Input.GetKeyDown(KeyCode.P)){
             gm.ChangeScene(SceneManager.GetActiveScene().name);

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(1920,1080,false);
         Application.targetFrameRate=60;
         KeyCount=0;
+        Cursor.visible=false;
+        Cursor.lockState=CursorLockMode.Locked;
     }
 
     private void Update(){
