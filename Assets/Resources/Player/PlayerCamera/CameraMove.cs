@@ -24,6 +24,7 @@ public class CameraMove : MonoBehaviour
 
     void Update() {
         isPause = MenuManager.instance.GetIsPause();
+        
         if(!isPause) {
             //　通常のカメラ位置を計算
             var cameraPos = charaLookAtPosition.position + (-charaLookAtPosition.forward * basePos.z) + (Vector3.up * basePos.y);
