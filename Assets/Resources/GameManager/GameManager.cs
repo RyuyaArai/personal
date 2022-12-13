@@ -6,29 +6,48 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int KeyCount;
+    [System.NonSerialized]
+    public static GameManager instance;
+
+    public int keyCount;
+    public int maxKeyCount;
     public Text textComponent;
+    public Text maxKey;
     public GameObject inductionText;
+
+    private void Awake() {
+        if(instance == null){
+            instance = this;
+        }    
+    }
 
     private void Start(){
         Screen.SetResolution(1920,1080,false);
         Application.targetFrameRate=60;
-        KeyCount=0;
+        keyCount=0;
         Cursor.visible=false;
         Cursor.lockState=CursorLockMode.Locked;
     }
 
     private void Update(){
-        if(KeyCount==3){
-        inductionText.SetActive(true);
+        if(keyCount >= maxKeyCount){
+            inductionText.SetActive(true);
         }
     }
 
     public void AddKeyCount(){
-        KeyCount++;
-        textComponent.text = "KeyCount : "+ KeyCount;
+        keyCount++;
+        if(keyCount > maxKeyCount){
+            keyCount = maxKeyCount;
+        }
+        textComponent.text = "KeyCount : "+ keyCount;
     }
 
+    public void AddMaxKeyCount(){
+        maxKeyCount++;
+        maxKey.text = " / "+ maxKeyCount;
+    }
+    
     public void SceneReset(){
         string activeSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(activeSceneName);

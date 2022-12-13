@@ -14,7 +14,6 @@ public class CreateKey : MonoBehaviour
     private float mapMag;
 
     private float pickUpKey;
-    private int picknum;
 
     private void Awake() {
         if(instance == null){
@@ -23,24 +22,23 @@ public class CreateKey : MonoBehaviour
     }
 
     private void Start() {
-        pickUpKey=Random.value * 6 + 4;
+        pickUpKey = Random.value * 6 + 4;
         pickUpKey = Mathf.RoundToInt(pickUpKey);
 
         mapDepth = CreateCubeMap.instance.GetDepth();
         mapWidth = CreateCubeMap.instance.GetWidth();
         mapMag = CreateCubeMap.instance.GetMagnification();
-        //spicknum = 0;
 
         CreateKeyAll();
-
     }
 
 
     private void CreateKeyAll() {
         for(int i = 0; i < pickUpKey; i++){
             Vector3 pos = new Vector3(Random.value * (mapDepth - 5) * mapMag + 5, 25, Random.value * (mapWidth - 5) * mapMag + 5);
-            GameObject obj = Instantiate(key,pos,Quaternion.identity);
-            obj.transform.SetParent(transform);                //キューブを子オブジェクトにする
+            GameObject obj = Instantiate(key,pos,Quaternion.identity);  //
+            obj.transform.SetParent(transform);     //keyを子オブジェクトにする
+            GameManager.instance.AddMaxKeyCount();
 
         }
     }
