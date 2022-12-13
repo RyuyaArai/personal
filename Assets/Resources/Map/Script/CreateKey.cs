@@ -6,6 +6,8 @@ public class CreateKey : MonoBehaviour
 {
     [SerializeField]
     private GameObject key;
+    [SerializeField]
+    private GameObject light;
     [System.NonSerialized]
     public static CreateKey instance;
 
@@ -36,8 +38,10 @@ public class CreateKey : MonoBehaviour
     private void CreateKeyAll() {
         for(int i = 0; i < pickUpKey; i++){
             Vector3 pos = new Vector3(Random.value * (mapDepth - 5) * mapMag + 5, 25, Random.value * (mapWidth - 5) * mapMag + 5);
-            GameObject obj = Instantiate(key,pos,Quaternion.identity);  //
-            obj.transform.SetParent(transform);     //keyを子オブジェクトにする
+            GameObject keyObj = Instantiate(key,pos,Quaternion.identity);
+            GameObject lightObj = Instantiate(light,pos,Quaternion.identity);
+            keyObj.transform.SetParent(transform);     //keyを子オブジェクトにする
+            lightObj.transform.SetParent(keyObj.transform);
             GameManager.instance.AddMaxKeyCount();
 
         }

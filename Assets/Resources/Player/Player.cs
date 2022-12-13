@@ -78,21 +78,21 @@ public class Player : MonoBehaviour
             if (other.gameObject.tag == "Ground") {
 	        	isJump = false;
     	    }
-            if(other.gameObject.tag == "Wall") {
-                isWall = true;
-            }
-            if(other.gameObject.tag != "Wall"){
-                isWall = false;
-            }
+            // if(other.gameObject.tag == "Wall") {
+            //     isWall = true;
+            // }
+            // if(other.gameObject.tag != "Wall"){
+            //     isWall = false;
+            // }
         }
     }
 
 
     private void OnTriggerEnter(Collider other) {
-        if(isJump == true) {
-            if(other.gameObject.tag == "WallTop") {
-                isJump = false;
-            }   
-        }
+        // if(isJump == true) {
+        //     if(other.gameObject.tag == "WallTop") {
+        //         isJump = false;
+        //     }   
+        // }
     }
 }

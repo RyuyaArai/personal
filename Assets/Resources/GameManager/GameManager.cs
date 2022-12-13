@@ -25,13 +25,22 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(1920,1080,false);
         Application.targetFrameRate=60;
         keyCount=0;
-        Cursor.visible=false;
-        Cursor.lockState=CursorLockMode.Locked;
+        string activeSceneName = SceneManager.GetActiveScene().name;
+        if(activeSceneName=="GameTwo"){
+            Cursor.visible = false;
+            Cursor.lockState=CursorLockMode.Locked;
+        }else{
+            Cursor.visible = true;
+            Cursor.lockState=CursorLockMode.None;
+        }
+        
     }
 
     private void Update(){
         if(keyCount >= maxKeyCount){
-            inductionText.SetActive(true);
+            if(inductionText.activeSelf==false){
+                inductionText.SetActive(true);
+            }
         }
     }
 

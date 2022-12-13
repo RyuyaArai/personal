@@ -22,11 +22,11 @@ public class Key : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other){
-        if(other.gameObject.tag == "Player") {
-            GameManager.instance.AddKeyCount();
-            Destroy(gameObject);
-        }
-    }
+    // private void OnTriggerEnter(Collider other){
+    //     if(other.gameObject.tag == "Player") {
+    //         GameManager.instance.AddKeyCount();
+    //         Destroy(gameObject);
+    //     }
+    // }
     
 }
