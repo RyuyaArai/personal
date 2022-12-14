@@ -9,6 +9,9 @@ public class MenuManager : MonoBehaviour
     [System.NonSerialized]
     public static MenuManager instance;
 
+    public GameObject confirmationPanel;
+
+
     private bool isPause;
 
     void Awake() {
@@ -22,6 +25,7 @@ public class MenuManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isPause = false;
+        confirmationPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,10 +42,12 @@ public class MenuManager : MonoBehaviour
         if(!reStart.activeSelf) {
             if(Input.GetKeyDown(KeyCode.Escape)) {
             reStart.SetActive(true);
+            confirmationPanel.SetActive(true);
             }
         }else {
             if(Input.GetKeyDown(KeyCode.Escape)) {
             reStart.SetActive(false);
+            confirmationPanel.SetActive(false);
             }
         }
     }
@@ -65,6 +71,8 @@ public class MenuManager : MonoBehaviour
         ReStartButtonSet();
         
     }
+
+    
 
     public bool GetIsPause() { return isPause; }
 }

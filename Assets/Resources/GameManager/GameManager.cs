@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
                 inductionText.SetActive(true);
             }
         }
+
+
     }
 
     public void AddKeyCount(){
@@ -50,6 +52,10 @@ public class GameManager : MonoBehaviour
             keyCount = maxKeyCount;
         }
         textComponent.text = "KeyCount : "+ keyCount;
+    }
+
+    public void GameEnd(){
+        Application.Quit();
     }
 
     public void AddMaxKeyCount(){
