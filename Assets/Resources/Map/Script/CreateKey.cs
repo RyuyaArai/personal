@@ -24,7 +24,7 @@ public class CreateKey : MonoBehaviour
     }
 
     private void Start() {
-        pickUpKey = Random.value * 6 + 4;
+        pickUpKey = Random.value * 4 + 1;
         pickUpKey = Mathf.RoundToInt(pickUpKey);
 
         mapDepth = CreateCubeMap.instance.GetDepth();

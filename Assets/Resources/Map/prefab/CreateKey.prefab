@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2974028428076081387}
-  - component: {fileID: 2974028428076081386}
+  - component: {fileID: -287566880343471300}
   m_Layer: 0
   m_Name: CreateKey
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2974028428076081386
+--- !u!114 &-287566880343471300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2974028428076081389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 142c4d1aff3ae5b44ad73428d3fc6af9, type: 3}
+  m_Script: {fileID: 11500000, guid: b0cd1b2f63d0f684588bfd01ccfa6010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 3378157168357533782, guid: 1ad6dbba29c481240846956566f16297, type: 3}
-  door: {fileID: 1577382074717775297, guid: 7f4474cfa554db04ebe34088840f61ef, type: 3}
   key: {fileID: 6733473037119588107, guid: bbc156fef4d34344a8077e8a0f3c524b, type: 3}
+  light: {fileID: 1681459753780231389, guid: 03e0482227d921941bebbd88d8bde791, type: 3}
